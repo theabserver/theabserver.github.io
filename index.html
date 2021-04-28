@@ -165,6 +165,9 @@
         const handlefullscreen = () =>
         {
             debugger;
+            $('[src="./img/toolbarImg/arrow_forward_ios_white_48dp.svg"]').parent().css('top', $('[src="./img/toolbarImg/arrow_back_ios_white_48dp.svg"]').parent().parent().css('top'))
+            $('[src="./img/toolbarImg/arrow_forward_ios_white_48dp.svg"]').parent().css('left', '15em')
+            $('[src="./img/toolbarImg/arrow_back_ios_white_48dp.svg"]').parent().parent().css('left', 0)
         }
         const handlezoom = () =>
         {
@@ -231,6 +234,13 @@
                 setTimeout(function ()
                 {
                     handlezoom()
+                }, 100);
+            })
+            $('[src="./img/toolbarImg/fullscreen_white_24dp.svg"]').on("click", function ()
+            {
+                setTimeout(function ()
+                {
+                    handlefullscreen()
                 }, 100);
             })
         }
