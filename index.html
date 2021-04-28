@@ -142,7 +142,7 @@
         }
         var runScripts = () =>
         {
-            if(isRendered) return
+            if($("#openfl-menu>div>div img:visible").length && isRendered) return
             let srcArr = [
                 './img/toolbarImg/menu_white_24dp.svg',
                 './img/toolbarImg/view_list_white_24dp.svg',
@@ -189,7 +189,7 @@
                     }
                 }
             })
-            isRendered = true
+            if($("#openfl-menu>div>div img:visible").length) isRendered = true
         }
 	</script>
 	<script type=text/javascript>
