@@ -179,7 +179,8 @@
                 {
                     $(this).attr('src', src);
                     if (index < 7){
-                        $(this).css('top', '95.7vh').css('left', ('40' + (index * 10)) + 'em')
+                        $(this).css('top', '95.7vh')
+                        // $(this).css('top', '95.7vh').css('left', ('40' + (index * 10)) + 'em')
                     }else{
                         $(this).prev().remove()
                         $(this).parent().prev().remove()
