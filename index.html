@@ -121,6 +121,65 @@
             lime.embed ("flipbookMobile", "openfl-content", 0, 0, { parameters: {} });
         }
         window.document.head.appendChild(mainJs);
+        const moveHeader = () =>
+        {
+            if ($("#openfl-menu").length)
+            {
+                let $toolbar = $('#openfl-menu>div:eq(0) img:eq(0)').parent().prev()
+                if ($('#openfl-menu>div:eq(0)>div').length == 4)
+                {
+                    $('#openfl-menu>div:eq(0)>div:eq(1)').remove();
+                }
+                $toolbar.css('top', '95.6vh').css('height', '40px')
+            }
+        }
+        var runScripts = () =>
+        {
+            let srcArr = [
+                './img/toolbarImg/menu_white_24dp.svg',
+                './img/toolbarImg/view_list_white_24dp.svg',
+                './img/toolbarImg/highlight_alt_white_24dp.svg',
+                './img/toolbarImg/volume_mute_white_24dp.svg',
+                './img/toolbarImg/fullscreen_white_24dp.svg',
+                './img/toolbarImg/print_white_24dp.svg',
+                './img/toolbarImg/zoom_in_white_24dp.svg',
+                './img/toolbarImg/arrow_back_ios_white_48dp.svg',
+                './img/toolbarImg/arrow_forward_ios_white_48dp.svg',
+            ]
+            /* let srcArr = [
+                './img/toolbarImg/menu_white_24dp.svg',
+                './img/toolbarImg/view_list_white_24dp.svg',
+                './img/toolbarImg/highlight_alt_white_24dp.svg',
+                './img/toolbarImg/volume_mute_white_24dp.svg',
+                './img/toolbarImg/fullscreen_exit_white_24dp.svg',
+                './img/toolbarImg/slideshow_white_24dp.svg',
+                './img/toolbarImg//pause_white_24dp.svg',
+                './img/toolbarImg/fullscreen_white_24dp.svg',
+                './img/toolbarImg/volume_off_white_24dp.svg',
+                './img/toolbarImg/print_white_24dp.svg',
+                './img/toolbarImg/pan_tool_white_24dp.svg',
+                './img/toolbarImg/zoom_in_white_24dp.svg',
+                './img/toolbarImg/arrow_back_ios_white_48dp.svg',
+                './img/toolbarImg/arrow_forward_ios_white_48dp.svg',
+            ] */
+            moveHeader()
+            $("#openfl-menu>div>div img:visible").each(function (index)
+            {
+                // $(this).css('top', '96vh')
+                let src = srcArr[index]
+                if ($("#openfl-menu img:eq(0)").attr('src') != src && srcArr[index] != undefined)
+                {
+                    $(this).attr('src', src);
+                    if (index < 7){
+                        $(this).css('top', '95.7vh')
+                    }else{
+                        $(this).prev().remove()
+                        $(this).parent().prev().remove()
+                        if(index == 8) $(this).parent().css('left', '40px')
+                    }
+                }
+            })
+        }
 	</script>
 	<script type=text/javascript>
 //put your JavaScript code here
