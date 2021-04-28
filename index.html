@@ -134,6 +134,12 @@
                 $toolbar.css('top', '95.6vh').css('height', '40px')
             }
         }
+        const handlefullscreen = () => {
+            debugger;
+        }
+         const handlezoom = () => {
+            debugger;
+        }
         var runScripts = () =>
         {
             if(isRendered) return
@@ -142,9 +148,9 @@
                 './img/toolbarImg/view_list_white_24dp.svg',
                 './img/toolbarImg/highlight_alt_white_24dp.svg',
                 './img/toolbarImg/volume_mute_white_24dp.svg',
-                './img/toolbarImg/fullscreen_white_24dp.svg',
+                './img/toolbarImg/fullscreen_white_24dp.svg',       // 4
                 './img/toolbarImg/print_white_24dp.svg',
-                './img/toolbarImg/zoom_in_white_24dp.svg',
+                './img/toolbarImg/zoom_in_white_24dp.svg',          // 6
                 './img/toolbarImg/arrow_back_ios_white_48dp.svg',
                 './img/toolbarImg/arrow_forward_ios_white_48dp.svg',
             ]
@@ -178,6 +184,8 @@
                         $(this).prev().remove()
                         $(this).parent().prev().remove()
                         if(index == 8) $(this).parent().css('left', '40px')
+                        if(index == 4)  $(this).addClass('zoom-icon')
+                        if(index == 6)  $(this).addClass('fs-icon')
                     }
                 }
             })
