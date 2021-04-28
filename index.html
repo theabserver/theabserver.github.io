@@ -162,20 +162,38 @@
                 $toolbar.css('top', '95.6vh').css('height', '40px')
             }
         }
+        const adjustNav = () => {
+            $('[src="./img/toolbarImg/keyboard_arrow_right_white_24dp.svg"]').parent().css('left', '91.3em')
+            $('[src="./img/toolbarImg/keyboard_arrow_left_white_24dp.svg"]').parent().parent().css('left', '40em')
+        }
         const handlefullscreen = () =>
         {
             debugger;
             $('[src="./img/toolbarImg/keyboard_arrow_right_white_24dp.svg"]').parent().css('top', $('[src="./img/toolbarImg/keyboard_arrow_left_white_24dp.svg"]').parent().css('top'))
             $('[src="./img/toolbarImg/keyboard_arrow_right_white_24dp.svg"]').css('top', $('[src="./img/toolbarImg/keyboard_arrow_left_white_24dp.svg"]').css('top'))
-            $('[src="./img/toolbarImg/keyboard_arrow_right_white_24dp.svg"]').parent().css('left', '15em')
-            $('[src="./img/toolbarImg/keyboard_arrow_left_white_24dp.svg"]').parent().parent().css('left', 0)
+            adjustNav()
+            alignIcons()
         }
         const handlezoom = () =>
         {
             debugger;
             $('[src="./img/toolbarImg/keyboard_arrow_right_white_24dp.svg"]').parent().css('top', $('[src="./img/toolbarImg/keyboard_arrow_left_white_24dp.svg"]').parent().parent().css('top'))
-            $('[src="./img/toolbarImg/keyboard_arrow_right_white_24dp.svg"]').parent().css('left', '15em')
-            $('[src="./img/toolbarImg/keyboard_arrow_left_white_24dp.svg"]').parent().parent().css('left', 0)
+            adjustNav()
+            alignIcons()
+        }
+        const alignIcons = () => {
+             $("#openfl-menu>div>div img:visible:lt(7)").each(function (index)
+            {
+                $(this).css('left', '45em')
+                if (index > 0)
+                {   
+                    let $parent = $(this).is('[src="./img/toolbarImg/fullscreen_white_24dp.svg"]') || $(this).is('[src="./img/toolbarImg/highlight_alt_white_24dp.svg"]')
+                                 || $(this).is('[src="./img/toolbarImg/volume_mute_white_24dp.svg"]') ? $(this).parent().parent() : $(this).parent()
+
+                    $(this).css('left', 10 + (index * 20) + 'px');
+                    $parent.css('left', (30 + (index + 15)) + 'em'); 
+                }
+            })
         }
         var runScripts = () =>
         {
@@ -191,22 +209,6 @@
                 './img/toolbarImg/keyboard_arrow_left_white_24dp.svg',
                 './img/toolbarImg/keyboard_arrow_right_white_24dp.svg',
             ]
-            /* let srcArr = [
-                './img/toolbarImg/menu_white_24dp.svg',
-                './img/toolbarImg/view_list_white_24dp.svg',
-                './img/toolbarImg/highlight_alt_white_24dp.svg',
-                './img/toolbarImg/volume_mute_white_24dp.svg',
-                './img/toolbarImg/fullscreen_exit_white_24dp.svg',
-                './img/toolbarImg/slideshow_white_24dp.svg',
-                './img/toolbarImg//pause_white_24dp.svg',
-                './img/toolbarImg/fullscreen_white_24dp.svg',
-                './img/toolbarImg/volume_off_white_24dp.svg',
-                './img/toolbarImg/print_white_24dp.svg',
-                './img/toolbarImg/pan_tool_white_24dp.svg',
-                './img/toolbarImg/zoom_in_white_24dp.svg',
-                './img/toolbarImg/keyboard_arrow_left_white_24dp.svg',
-                './img/toolbarImg/keyboard_arrow_right_white_24dp.svg',
-            ] */
             moveHeader()
             $("#openfl-menu>div>div img:visible").each(function (index)
             {
@@ -229,18 +231,8 @@
                     }
                 }
             })
-            $("#openfl-menu>div>div img:visible:lt(7)").each(function (index)
-            {
-                $(this).css('left', '45em')
-                if (index > 0)
-                {   
-                    let $parent = $(this).is('[src="./img/toolbarImg/fullscreen_white_24dp.svg"]') || $(this).is('[src="./img/toolbarImg/highlight_alt_white_24dp.svg"]')
-                                 || $(this).is('[src="./img/toolbarImg/volume_mute_white_24dp.svg"]') ? $(this).parent().parent() : $(this).parent()
-
-                    $(this).css('left', 10 + (index * 20) + 'px');
-                    $parent.css('left', (30 + (index + 15)) + 'em'); 
-                }
-            })
+            alignIcons()
+            adjustNav()
             // if($("#openfl-menu>div>div img:visible").length) isRendered = true
             $('[src="./img/toolbarImg/zoom_in_white_24dp.svg"]').on("click", function ()
             {
