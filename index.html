@@ -98,6 +98,7 @@
 	<div id="openfl-content"></div>
 
 	<script type="text/javascript">
+    var isRendered = false
         function getQueryVariable(variable)
         {
             var query = window.location.search.substring(1);
@@ -135,6 +136,7 @@
         }
         var runScripts = () =>
         {
+            if(isRendered) return
             let srcArr = [
                 './img/toolbarImg/menu_white_24dp.svg',
                 './img/toolbarImg/view_list_white_24dp.svg',
@@ -179,6 +181,7 @@
                     }
                 }
             })
+            isRendered = true
         }
 	</script>
 	<script type=text/javascript>
